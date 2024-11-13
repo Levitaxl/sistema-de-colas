@@ -33,7 +33,7 @@ export const LeftSlot = () => {
 
   return (
     <div>
-      <animated.div style={propsGreen} className="card green-card">
+      <animated.div style={propsGreen} className="card green-card animated-div">
         {activeCard && (
            <div className="admin-marign-top-7-5">
             <CardHeader className="space-y-1">
