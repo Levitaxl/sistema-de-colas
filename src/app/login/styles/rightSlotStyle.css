@@ -1,0 +1,28 @@
+.right-slot {
+    width: calc(90% - 600px);
+    padding: 0 15px;
+    justify-content: center;
+    max-height: 420px;
+    margin:auto;
+}
+
+.admin-marign-top-9-5{
+    margin-top: 2.5%;
+   
+
+}
+
+.right-slot > .admin-marign-top-9-5{
+    box-shadow: 1px 2px 4px 2px #dedede;
+}
+
+@media only screen and (max-width: 800px) {
+    .admin-mainflex  .right-slot {
+        width: 100%!important;
+    }
+
+    .admin-marign-top-9-5{
+        margin-top: 10%;
+   
+    }
+}

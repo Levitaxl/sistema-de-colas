@@ -1,0 +1,68 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif!important;
+    color: #333333;
+}
+
+.admin-mainflex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+.admin-identy-holder h1 {
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 2.25rem;
+}
+.admin-identy-holder strong {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    padding: 10px;
+}
+.admin-main-image {
+    text-align: center;
+    bottom: 5%;
+    position: relative;
+}
+.admin-main-image img {
+    margin-top: -25px;
+    max-width: 100%;
+}
+.forminput-holder label {
+    display: block;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+    text-align: left;
+}
+.forminput-holder {
+    margin-bottom: 25px;
+    text-align: right; margin-bottom: 0;
+}
+
+.admin-icon img {
+    height: 135px;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.logo-icon .hs-logo{
+    height: 140px;
+    margin: auto;
+}
+
+#forgot_btn:hover{
+    color: #2a6496;
+    text-decoration: underline;
+}
+
+
