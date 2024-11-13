@@ -12,7 +12,7 @@ export const LeftSlot = () => {
             <strong className="z-10 relative">Monitor your server usage &amp; services as well as manage applications &amp; front website.</strong>
         </div>
         <div className="admin-main-image">
-            <img src="./dashboard.jpg"/>
+            <img src="#"/>
         </div>
     </div>);
 };

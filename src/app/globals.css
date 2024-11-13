@@ -10,11 +10,11 @@
 
 
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background-color: rgb(229 231 235 / 1);
+body{    
+  background-image: url("/bg-dark.png");
+  background-size: cover;
+  background-position: center;
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
