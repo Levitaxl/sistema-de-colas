@@ -7,13 +7,21 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
+import io from "socket.io-client"
 
 import '../styles/rightSlotStyle.css'
 
-export const RightSlot = () => {
-    const [selectedReason, setSelectedReason] = useState('');
 
-    const [activeCard, setActiveCard] = useState(0);
+
+export const RightSlot = () => {
+    const socket = io("http://localhost:3001/")
+    
+
+
+
+    const [selectedReason, setSelectedReason] = useState('');
+    const [isUser, setIsUser] = useState(false);
+        const [activeCard, setActiveCard] = useState(0);
     const [CI, setCI] = useState<string>(""); 
     const [id, setid] = useState<string>("");
     const [permiso, setPermiso] = useState<boolean>(true); 
@@ -37,6 +45,27 @@ export const RightSlot = () => {
       });
 
 
+      useEffect(()=>{
+        socket.on('message', response =>{
+          console.log(response)
+          response = JSON.parse(response)
+          console.log(response)
+
+          const responseFase = response.responseFase;
+          if(responseFase==1){
+            setActiveCard(1);
+            const isUser = response.isUser
+            console.log(isUser)
+            setIsUser(isUser);
+          }
+
+        })
+
+        return () => {
+          socket.off('message')
+        }
+      },[])
+
       const CheckboxOption = ({ label, value, isSelected, onCheckboxChange, classname2 }) => (
         <div className="flex items-center space-x-2">
           <input
@@ -56,8 +85,20 @@ export const RightSlot = () => {
     
 
       const passButton = (valor) => {
-        console.log(valor);
-        setActiveCard(valor);
+        //setActiveCard(valor);
+
+  
+        if(valor == 1){
+          let user = {
+            'fase' : 1,
+            'ci'   : CI,
+            "id"   : id
+          }
+
+          const jsonString = JSON.stringify(user);
+
+          socket.emit('message',jsonString);
+        }
        
        
         if (valor === 2) {
@@ -122,13 +163,14 @@ export const RightSlot = () => {
                     onCheckboxChange={handleCheckboxChange}
                     classname2="mr-[10px]"
                 />
+                {isUser && 
                 <CheckboxOption
                     label="Promotor de servicios"
                     value="promotor_servicios"
                     isSelected={selectedReason}
                     onCheckboxChange={handleCheckboxChange}
                     classname2="mr-[10px]"
-                />
+                />}
                 <CheckboxOption
                     label="Atención preferencial"
                     value="atencion_preferencial"
@@ -136,20 +178,20 @@ export const RightSlot = () => {
                     onCheckboxChange={handleCheckboxChange}
                     classname2="mr-[10px]"
                 />
-                <CheckboxOption
+                {isUser && <CheckboxOption
                     label="Emisión de chequeras"
                     value="emision_chequeras"
                     isSelected={selectedReason}
                     onCheckboxChange={handleCheckboxChange}
                     classname2="mr-[10px]"
-                />
-                <CheckboxOption
+                />}
+                {isUser &&  <CheckboxOption
                     label="Tarjetas"
                     value="tarjetas"
                     isSelected={selectedReason}
                     onCheckboxChange={handleCheckboxChange}
                     classname2="mr-[10px]"
-                />
+                /> }
                 </div>
 
 
