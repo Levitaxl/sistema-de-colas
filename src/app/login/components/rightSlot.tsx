@@ -21,10 +21,14 @@ export const RightSlot = () => {
 
     const [selectedReason, setSelectedReason] = useState('');
     const [isUser, setIsUser] = useState(false);
-        const [activeCard, setActiveCard] = useState(0);
+    const [userName, setUserName] = useState("")
+    const [posicion, setPosicion] = useState("")
+    const [activeCard, setActiveCard] = useState(0);
     const [CI, setCI] = useState<string>(""); 
     const [id, setid] = useState<string>("");
     const [permiso, setPermiso] = useState<boolean>(true); 
+    const [letra, setLetra] = useState<string>(""); 
+
     const animation = useSpring({
         opacity: activeCard == 0 ? 1 : 0,
         transform: activeCard== 0 ? 'scale(1)' : 'scale(0.5)', 
@@ -52,11 +56,34 @@ export const RightSlot = () => {
           console.log(response)
 
           const responseFase = response.responseFase;
+          console.log(responseFase)
           if(responseFase==1){
             setActiveCard(1);
             const isUser = response.isUser
-            console.log(isUser)
             setIsUser(isUser);
+            if(isUser){
+              setUserName(response.nombre)
+            }
+
+            else{
+              setUserName(CI)
+            }
+          }
+
+          else if(responseFase==2){
+            console.log("PRUEBA")
+            setActiveCard(2);
+            console.log(response.posicion)
+            const new_id = response.posicion;
+            const new_letra = response.letra;
+            setPosicion(new_id);
+            setLetra(new_letra)
+
+            setTimeout(() => {
+              setActiveCard(0);
+          }, 5000); // 5000 milisegundos = 5 segundos
+
+
           }
 
         })
@@ -85,11 +112,8 @@ export const RightSlot = () => {
     
 
       const passButton = (valor) => {
-        //setActiveCard(valor);
-
-  
         if(valor == 1){
-          let user = {
+          const user = {
             'fase' : 1,
             'ci'   : CI,
             "id"   : id
@@ -99,15 +123,33 @@ export const RightSlot = () => {
 
           socket.emit('message',jsonString);
         }
+
+        else if(valor == 2){
+          const user = {
+            'fase' : 2,
+            'ci'   : CI,
+            "id"   : id,
+            "selectedReason" : selectedReason
+          }
+
+          const jsonString = JSON.stringify(user);
+          socket.emit('message',jsonString);
+        }
        
-       
+       /*
         if (valor === 2) {
             // Si valor es 3, se ejecuta un setTimeout
             setTimeout(() => {
                 setActiveCard(0);
             }, 5000); // 5000 milisegundos = 5 segundos
-        } 
+        } */
     };
+
+    const backButton = (valor) => {
+      setActiveCard(valor);
+     
+    
+  };
     
 
 
@@ -142,10 +184,10 @@ export const RightSlot = () => {
         <animated.div style={animation2}>
         <Card className={`card-style  ${activeCard==1 ? 'show' : 'animated-div'}`}>
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span> <span className="color-white"> Hermes </span></CardTitle>
+                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span> <span className="color-white"> {userName} </span></CardTitle>
                 </CardHeader>
                 <CardContent className="max-w-2xl m-auto">
-                    <div className = "font-bold"><span className="text-highlight">|</span><span className="color-white"> Tipo de servicio a solicitar</span></div>
+                    <div className = "font-bold"><span className="color-white"> <span className="text-highlight">| Cedula:</span>  {CI}</span> <br></br><span className="text-highlight">|</span><span className="color-white"> Servicio a solicitar</span> </div>
                     <br></br>
             <div className="space-y-4">
             <div className="grid grid-cols-2 gap-2">
@@ -197,7 +239,7 @@ export const RightSlot = () => {
 
         
         <div className="flex">
-          <Button onClick={() => passButton(0)} className={`w-[50%] mr-[25%] ${permiso && 'bg-[#799FCB]'}`} type="submit">
+          <Button onClick={() => backButton(0)} className={`w-[50%] mr-[25%] ${permiso && 'bg-[#799FCB]'}`} type="submit">
             Atras
           </Button>
           <Button
@@ -218,8 +260,8 @@ export const RightSlot = () => {
         <animated.div style={animation3}>
                 <Card className={`card-style  ${activeCard==2 ? 'show' : 'animated-div'}`}>
                         <CardHeader className="space-y-1 m-auto">
-                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Número: </span> <span className="color-white"> 123456 </span></CardTitle>
-                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Letra: </span> <span className="color-white"> H </span></CardTitle>
+                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Número: </span> <span className="color-white"> {posicion} </span></CardTitle>
+                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Letra: </span> <span className="color-white"> {letra} </span></CardTitle>
                         </CardHeader>
 
         </Card>
