@@ -135,14 +135,6 @@ export const RightSlot = () => {
           const jsonString = JSON.stringify(user);
           socket.emit('message',jsonString);
         }
-       
-       /*
-        if (valor === 2) {
-            // Si valor es 3, se ejecuta un setTimeout
-            setTimeout(() => {
-                setActiveCard(0);
-            }, 5000); // 5000 milisegundos = 5 segundos
-        } */
     };
 
     const backButton = (valor) => {
