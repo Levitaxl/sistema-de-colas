@@ -151,7 +151,7 @@ export const RightSlot = () => {
                   id="C.I"
                   placeholder="Cedula de identidad"
                   required
-                  type="C.I"
+                  type="number"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setCI(event.target.value);
                   }}
@@ -165,7 +165,7 @@ export const RightSlot = () => {
                 <Input
                   id="id"
                   required
-                  type="id"
+                  type="number"
                   placeholder="ID"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setid(event.target.value);
@@ -179,6 +179,7 @@ export const RightSlot = () => {
                   !permiso && "bg-[#111827] cursor-not-allowed opacity-100	"
                 }`}
                 type="submit"
+                disabled={CI === "" || id === ""}
               >
                 Continuar
               </Button>
