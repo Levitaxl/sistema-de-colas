@@ -4,8 +4,15 @@
     justify-content: center;
     margin:auto;
     max-width: 500px;
-
 }
+
+.color-white{
+    color: white!important;
+}
+
+.my-custom-spacing {
+    margin-right: 1rem;
+  }
 
 .animated-div{
     opacity: 0;
