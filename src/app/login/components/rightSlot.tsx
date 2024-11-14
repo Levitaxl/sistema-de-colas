@@ -13,19 +13,26 @@ import '../styles/rightSlotStyle.css'
 export const RightSlot = () => {
     const [selectedReason, setSelectedReason] = useState('');
 
-    const [activeCard, setActiveCard] = useState(true);
+    const [activeCard, setActiveCard] = useState(0);
     const [CI, setCI] = useState<string>(""); 
     const [id, setid] = useState<string>("");
     const [permiso, setPermiso] = useState<boolean>(true); 
     const animation = useSpring({
-        opacity: activeCard ? 1 : 0,
-        transform: activeCard ? 'scale(1)' : 'scale(0.5)', 
+        opacity: activeCard == 0 ? 1 : 0,
+        transform: activeCard== 0 ? 'scale(1)' : 'scale(0.5)', 
         config: { mass: 1, tension: 250, friction: 40 }, 
       });
     
       const animation2 = useSpring({
-        opacity: !activeCard ? 1 : 0,
-        transform: !activeCard ? 'scale(1)' : 'scale(0.5)',
+        opacity: activeCard == 1 ? 1 : 0,
+        transform: activeCard == 1 ? 'scale(1)' : 'scale(0.5)',
+        config: { mass: 1, tension: 250, friction: 40 },
+      });
+
+      
+      const animation3 = useSpring({
+        opacity: activeCard == 2 ? 1 : 0,
+        transform: activeCard ==2 ? 'scale(1)' : 'scale(0.5)',
         config: { mass: 1, tension: 250, friction: 40 },
       });
 
@@ -49,16 +56,25 @@ export const RightSlot = () => {
     
 
       const passButton = (valor) => {
-          console.log(valor)
-            setActiveCard(!activeCard);
-      };
+        console.log(valor);
+        setActiveCard(valor);
+       
+       
+        if (valor === 2) {
+            // Si valor es 3, se ejecuta un setTimeout
+            setTimeout(() => {
+                setActiveCard(0);
+            }, 5000); // 5000 milisegundos = 5 segundos
+        } 
+    };
+    
 
 
   return (  
     <div className="mx-auto right-slot table-hs3">
               <animated.div style={animation}>
 
-  <Card className={`card-style  ${activeCard ? 'show' : 'animated-div'}`}>
+  <Card className={`card-style  ${activeCard==0 ? 'show' : 'animated-div'}`}>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span></CardTitle>
                 </CardHeader>
@@ -83,73 +99,67 @@ export const RightSlot = () => {
         </animated.div>
 
         <animated.div style={animation2}>
-        <Card className={`card-style  ${!activeCard ? 'show' : 'animated-div'}`}>
+        <Card className={`card-style  ${activeCard==1 ? 'show' : 'animated-div'}`}>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span> <span className="color-white"> Hermes </span></CardTitle>
                 </CardHeader>
                 <CardContent className="max-w-2xl m-auto">
+                    <div className = "font-bold"><span className="text-highlight">|</span><span className="color-white"> Tipo de servicio a solicitar</span></div>
+                    <br></br>
             <div className="space-y-4">
-                <div className="space-y-2">
-                    <div className="flex gap-[59.5px]" > 
-                    <CheckboxOption
-                        label="Atención por taquilla"
-                        value="atencion_taquilla"
-                        isSelected={selectedReason}
-                        onCheckboxChange={handleCheckboxChange}
-                        classname2="mr-[10px]"
-                        />
-                        <CheckboxOption
-                        label="Apertura de cuentas"
-                        value="apertura_cuentas"
-                        isSelected={selectedReason}
-                        onCheckboxChange={handleCheckboxChange}
-                        classname2="mr-[10px]"
-
-                        />
-                    </div>
-
-                    <div className="flex gap-[50px]">
-                        <CheckboxOption
-                        label="Promotor de servicios"
-                        value="promotor_servicios"
-                        isSelected={selectedReason}
-                        
-                        onCheckboxChange={handleCheckboxChange}
-                        classname2="mr-[10px]"
-                        />
-                        <CheckboxOption
-                        label="Atención preferencial"
-                        value="atencion_preferencial"
-                        isSelected={selectedReason}
-                        onCheckboxChange={handleCheckboxChange}
-                        classname2="mr-[10px]"
-                        />
-                    </div>
-
-                    <div className="flex gap-[50px]">
-                        <CheckboxOption
-                        label="Emisión de chequeras"
-                        value="emision_chequeras"
-                        isSelected={selectedReason}
-                        onCheckboxChange={handleCheckboxChange}
-                        classname2="mr-[10px]"
-                        />
-                        <CheckboxOption 
-                            label="Tarjetas" 
-                            value="tarjetas" 
-                            isSelected={selectedReason}
-                             onCheckboxChange={handleCheckboxChange}
-                             classname2="mr-[10px]" />
-                    </div>
+            <div className="grid grid-cols-2 gap-2">
+                <CheckboxOption
+                    label="Atención por taquilla"
+                    value="atencion_taquilla"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
+                <CheckboxOption
+                    label="Apertura de cuentas"
+                    value="apertura_cuentas"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
+                <CheckboxOption
+                    label="Promotor de servicios"
+                    value="promotor_servicios"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
+                <CheckboxOption
+                    label="Atención preferencial"
+                    value="atencion_preferencial"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
+                <CheckboxOption
+                    label="Emisión de chequeras"
+                    value="emision_chequeras"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
+                <CheckboxOption
+                    label="Tarjetas"
+                    value="tarjetas"
+                    isSelected={selectedReason}
+                    onCheckboxChange={handleCheckboxChange}
+                    classname2="mr-[10px]"
+                />
                 </div>
+
 
         
         <div className="flex">
-          <Button onClick={passButton} className={`w-[50%] mr-[25%] ${permiso && 'bg-[#799FCB]'}`} type="submit">
+          <Button onClick={() => passButton(0)} className={`w-[50%] mr-[25%] ${permiso && 'bg-[#799FCB]'}`} type="submit">
             Atras
           </Button>
           <Button
-            onClick={passButton}
+            onClick={() => passButton(2)}
             className={`w-[50%] ${permiso && 'bg-[#799FCB]'}`}
             type="submit"
             disabled={!selectedReason} // Disable submit button if no reason is selected
@@ -159,6 +169,16 @@ export const RightSlot = () => {
         </div>
       </div>
     </CardContent>
+
+        </Card>
+        </animated.div>
+
+        <animated.div style={animation3}>
+                <Card className={`card-style  ${activeCard==2 ? 'show' : 'animated-div'}`}>
+                        <CardHeader className="space-y-1 m-auto">
+                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Número: </span> <span className="color-white"> 123456 </span></CardTitle>
+                            <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Letra: </span> <span className="color-white"> H </span></CardTitle>
+                        </CardHeader>
 
         </Card>
         </animated.div>
