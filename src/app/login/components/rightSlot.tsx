@@ -14,7 +14,7 @@ import '../styles/rightSlotStyle.css'
 
 
 export const RightSlot = () => {
-    const socket = io("https://backend-proyecto-colas.onrender.com/")
+    const socket = io("https://backend-proyecto-colas.onrender.com")
     
 
 
