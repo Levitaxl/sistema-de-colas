@@ -23,7 +23,6 @@ export const RightSlot = () => {
   const [activeCard, setActiveCard] = useState(0);
   const [CI, setCI] = useState<string>("");
   const [id, setid] = useState<string>("");
-  const [permiso, setPermiso] = useState<boolean>(true);
   const [letra, setLetra] = useState<string>("");
 
 
@@ -175,9 +174,7 @@ export const RightSlot = () => {
 
               <Button
                 onClick={() => passButton(1)}
-                className={`w-full ${permiso && "bg-[#799FCB]"} ${
-                  !permiso && "bg-[#111827] cursor-not-allowed opacity-100	"
-                }`}
+                className={`w-full bg-[#799FCB]"`}
                 type="submit"
                 disabled={CI === "" || id === ""}
               >
@@ -264,14 +261,14 @@ export const RightSlot = () => {
               <div className="flex">
                 <Button
                   onClick={() => backButton(0)}
-                  className={`w-[50%] mr-[25%] ${permiso && "bg-[#799FCB]"}`}
+                  className={`w-[50%] mr-[25%] bg-[#799FCB]`}
                   type="submit"
                 >
                   Atras
                 </Button>
                 <Button
                   onClick={() => passButton(2)}
-                  className={`w-[50%] ${permiso && "bg-[#799FCB]"}`}
+                  className={`w-[50%] bg-[#799FCB]`}
                   type="submit"
                   disabled={!selectedReason} // Disable submit button if no reason is selected
                 >
