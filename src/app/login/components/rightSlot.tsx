@@ -14,7 +14,7 @@ import '../styles/rightSlotStyle.css'
 
 
 export const RightSlot = () => {
-    const socket = io("http://localhost:3001/")
+    const socket = io("https://backend-proyecto-colas.onrender.com/")
     
 
 
@@ -103,7 +103,7 @@ export const RightSlot = () => {
             checked={isSelected === value}
             onChange={onCheckboxChange}
           />
-          <label className= {classname2} htmlFor={value}>{label}</label>
+          <label className= {classname2} htmlFor={value}><span className="color-white">{label}</span></label>
         </div>
       );
       const handleCheckboxChange = (event) => {
@@ -151,16 +151,16 @@ export const RightSlot = () => {
 
   <Card className={`card-style  ${activeCard==0 ? 'show' : 'animated-div'}`}>
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span></CardTitle>
+                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">¡Bienvenido/a!</span></CardTitle>
                 </CardHeader>
                 <CardContent className="max-w-2xl m-auto">
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="C.I" className="font-bold"><span className="text-highlight">| </span>Cedula de identidad</Label>
+                            <Label htmlFor="C.I" className="font-bold"><span className="text-highlight">| </span><span className = "color-white">Cedula de identidad</span></Label>
                             <Input id="C.I" placeholder="Cedula de identidad" required type="C.I" onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setCI(event.target.value) }} />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="id" className="font-bold"><span className="text-highlight">| </span>ID</Label>
+                            <Label htmlFor="id" className="font-bold"><span className="text-highlight">| </span><span className = "color-white">ID</span></Label>
                             <Input id="id" required type="id" placeholder="ID"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setid(event.target.value) }}/>
                         </div>
 
@@ -176,7 +176,7 @@ export const RightSlot = () => {
         <animated.div style={animation2}>
         <Card className={`card-style  ${activeCard==1 ? 'show' : 'animated-div'}`}>
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">Bienvenido</span> <span className="color-white"> {userName} </span></CardTitle>
+                    <CardTitle className="text-4xl font-bold text-center"><span className="text-highlight">¡Bienvenido/a!</span> <span className="color-white"> {userName} </span></CardTitle>
                 </CardHeader>
                 <CardContent className="max-w-2xl m-auto">
                     <div className = "font-bold"><span className="color-white"> <span className="text-highlight">| Cedula:</span>  {CI}</span> <br></br><span className="text-highlight">|</span><span className="color-white"> Servicio a solicitar</span> </div>
