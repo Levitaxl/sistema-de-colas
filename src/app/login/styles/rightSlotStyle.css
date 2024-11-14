@@ -52,17 +52,25 @@ label{
     background-color: #212121;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px) {
     .admin-mainflex  .right-slot {
-        width: 100%!important;
+        width: 90%!important;
+        margin-top: 25vh;
     }
 
     .admin-marign-top-9-5{
         margin-top: 10%;
    
     }
-}
 
+    body{
+        background-color: white!important;
+        background-image: url("/5.png");
+        background-size: 0%;
+    }
+
+    
+}
 .text-highlight{
   color: #006EC1!important;
 }
