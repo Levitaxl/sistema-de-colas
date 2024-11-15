@@ -21,8 +21,8 @@ export const RightSlot = () => {
   const [userName, setUserName] = useState("");
   const [posicion, setPosicion] = useState("");
   const [activeCard, setActiveCard] = useState(0);
-  const [CI, setCI] = useState<string>("");
-  const [id, setid] = useState<string>("");
+  const [CI, setCI] = useState("");
+  const [id, setid] = useState("");
   const [permiso, setPermiso] = useState<boolean>(true);
   const [letra, setLetra] = useState<string>("");
 
@@ -84,6 +84,8 @@ export const RightSlot = () => {
         setActiveCard(2);
         setPosicion(response.posicion);
         setLetra(response.letra);
+        setCI("")
+        setid("")
 
         setTimeout(() => {
           setActiveCard(0);
@@ -153,8 +155,13 @@ export const RightSlot = () => {
                   placeholder="Cédula de identidad"
                   required
                   type="number"
+                  value= {CI}
+                  min="1" // Establece el valor mínimo a 1
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setCI(event.target.value);
+                    const newCi = parseInt(event.target.value);
+                    if (newCi > 0) {
+                      setCI(event.target.value);
+                    }
                   }}
                 />
               </div>
@@ -168,15 +175,21 @@ export const RightSlot = () => {
                   required
                   type="number"
                   placeholder="ID"
+                  value={id}
+                  min="1" // Establece el valor mínimo a 1
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setid(event.target.value);
+                    const newId = parseInt(event.target.value);
+                    if (newId > 0) {
+                      setid(event.target.value);
+                    }
                   }}
                 />
-              </div>
 
+              </div>
+                <br></br>
               <Button
                 onClick={() => passButton(1)}
-                className={`w-full ${permiso && "bg-[#799FCB]"} ${
+                className={`w-full mt-[50px] ${permiso && "bg-[#799FCB]"} ${
                   !permiso && "bg-[#111827] cursor-not-allowed opacity-100	"
                 }`}
                 type="submit"
