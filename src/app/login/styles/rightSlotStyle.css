@@ -53,6 +53,9 @@ label{
 }
 
 @media only screen and (max-width: 1024px) {
+    .img-responsive-title{
+        display: block!important;
+    }
     .admin-mainflex  .right-slot {
         width: 90%!important;
         margin-top: 25vh;
@@ -73,4 +76,8 @@ label{
 }
 .text-highlight{
   color: #006EC1!important;
+}
+
+.img-responsive-title{
+    display: none;
 }
