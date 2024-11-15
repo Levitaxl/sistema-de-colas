@@ -20,9 +20,8 @@
 
 ## Link al despliegue
 
-  [https://backend-proyecto-colas.onrender.com](https://sistema-de-colas.vercel.app/)
-
-
+[sistema-de-colas.vercel.app
+](https://sistema-de-colas.vercel.app/)
 ## Resultado owasp zap
 
 ![image](https://github.com/user-attachments/assets/127cb5a2-4adb-4d5e-a083-b5f802320263)
