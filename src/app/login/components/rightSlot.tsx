@@ -9,10 +9,11 @@ import { Button } from "@/components/ui/button";
 import { CheckboxOption } from "./CheckboxOption";
 import io from "socket.io-client";
 import "../styles/rightSlotStyle.css";
+import 'dotenv/config'
 
 export const RightSlot = () => {
   /* Conexión al socket */
-  const socket = io("https://backend-proyecto-colas.onrender.com");
+  const socket = io(process.env.NEXT_PUBLIC_URL_SOCKET);
 
 
   /* Variable de los estados */
