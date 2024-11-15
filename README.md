@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sistema de colas - Frontend
 
-## Getting Started
+## Requisitos previos
 
-First, run the development server:
+    Asegúrese de que Node.js (>= 10.13.0) esté instalado en su sistema operativo.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tecnologías
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Se utilizó ReactJs
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instalación
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    Git clone https://github.com/Levitaxl/sistema-de-colas.git
+    cd sistema-de-colas
+    npm i
 
-## Learn More
+## Ejecutar el código
 
-To learn more about Next.js, take a look at the following resources:
+    npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Link al despliegue
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  [https://backend-proyecto-colas.onrender.com](https://sistema-de-colas.vercel.app/)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Resultado owasp zap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/user-attachments/assets/127cb5a2-4adb-4d5e-a083-b5f802320263)
+
+## Link del reporte
+https://sistema-de-colas.vercel.app/2024-11-14-ZAP-Report-.html
