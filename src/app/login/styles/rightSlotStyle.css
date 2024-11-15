@@ -58,7 +58,7 @@ label{
     }
     .admin-mainflex  .right-slot {
         width: 90%!important;
-        margin-top: 25vh;
+        margin-top: 20vh;
     }
 
     .admin-marign-top-9-5{
@@ -66,11 +66,6 @@ label{
    
     }
 
-    body{
-        background-color: white!important;
-        background-image: url("/5.png");
-        background-size: 0%;
-    }
 
     
 }
